@@ -1,0 +1,7 @@
+# .gitignore
+.env
+django/.env
+nextjs/.env
+__pycache__/
+*.sqlite3
+/static/
