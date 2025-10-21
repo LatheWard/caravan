@@ -1,0 +1,24 @@
+# Pull base image
+FROM python:3.10.4-slim-bullseye
+
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g $GID appgroup \
+ && useradd -m -u $UID -g $GID appuser
+
+USER appuser
+# Set environment variables
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set work directory
+WORKDIR /caravan
+
+# Install dependencies
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy project
+COPY . .
