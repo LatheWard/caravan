@@ -1,7 +1,6 @@
 # .gitignore
 .env
 *.env
-*/settings.py
 __pycache__/
 *.sqlite3
 /static/
